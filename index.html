@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="id" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masterclass Metodologi Penelitian Kuantitatif | Platform Interaktif</title>
+  <meta name="description" content="Modul interaktif komprehensif metodologi penelitian kuantitatif: karakteristik, tujuan, desain, variabel, populasi, sampel, studi kasus SEM, dan kuis evaluasi.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Background Glow Accents -->
+  <div class="ambient-glow glow-1"></div>
+  <div class="ambient-glow glow-2"></div>
+
+  <!-- Header -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-badge">MODUL KULIAH METOPEN</span>
+          <h1 class="brand-title">Metodologi Penelitian Kuantitatif</h1>
+        </div>
+      </div>
+
+      <div class="header-controls">
+        <div class="progress-container">
+          <span class="progress-label">Progress Belajar: <strong id="progress-percent">0%</strong></span>
+          <div class="progress-bar-bg">
+            <div class="progress-bar-fill" id="module-progress-fill"></div>
+          </div>
+        </div>
+
+        <button class="icon-btn" id="audio-toggle-btn" title="Toggle Efek Suara" aria-label="Toggle Efek Suara">
+          <svg id="audio-icon-on" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <svg id="audio-icon-off" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <line x1="23" y1="9" x2="17" y2="15"></line>
+            <line x1="17" y1="9" x2="23" y2="15"></line>
+          </svg>
+        </button>
+
+        <button class="icon-btn" id="theme-toggle-btn" title="Ganti Tema (Gelap / Terang)" aria-label="Ganti Tema">
+          <svg id="theme-icon-sun" class="hidden" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg id="theme-icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- Quick Leaderboard Button in Header -->
+        <button class="header-action-btn" id="btn-header-leaderboard" title="Buka Papan Peringkat">
+          <span>🏆 Peringkat</span>
+        </button>
+
+        <!-- Owner Panel Button (Visible when owner logged in) -->
+        <button class="header-action-btn btn-owner-glow hidden" id="btn-header-owner" title="Panel Kontrol Pemilik">
+          <span>👑 Panel Owner</span>
+        </button>
+
+        <!-- User Authentication Widget -->
+        <div class="user-auth-widget" id="user-auth-widget">
+          <button type="button" class="btn-auth-trigger" id="btn-open-auth-modal" title="Masuk atau Ganti Akun">
+            <span class="auth-avatar-pill" id="user-avatar-pill">👤</span>
+            <span class="auth-name-label" id="user-name-label">Masuk / Akun</span>
+          </button>
+          <button type="button" class="btn-logout-trigger hidden" id="btn-logout" title="Keluar dari Sesi" aria-label="Keluar">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Navigation Tabs Bar -->
+    <nav class="nav-tabs-wrapper" aria-label="Navigasi Modul">
+      <div class="nav-tabs" id="tab-nav-bar" role="tablist">
+        <button class="tab-btn active" role="tab" id="tab-btn-dashboard" aria-selected="true" aria-controls="tab-dashboard" data-tab="tab-dashboard">
+          <span class="tab-index">00</span>
+          <span class="tab-title">🏠 Beranda & Login</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-1" aria-selected="false" aria-controls="tab-1" data-tab="tab-1">
+          <span class="tab-index">01</span>
+          <span class="tab-title">Karakteristik</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-2" aria-selected="false" aria-controls="tab-2" data-tab="tab-2">
+          <span class="tab-index">02</span>
+          <span class="tab-title">Tujuan</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-3" aria-selected="false" aria-controls="tab-3" data-tab="tab-3">
+          <span class="tab-index">03</span>
+          <span class="tab-title">Desain Riset</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-4" aria-selected="false" aria-controls="tab-4" data-tab="tab-4">
+          <span class="tab-index">04</span>
+          <span class="tab-title">Variabel</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-5" aria-selected="false" aria-controls="tab-5" data-tab="tab-5">
+          <span class="tab-index">05</span>
+          <span class="tab-title">Populasi</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-6" aria-selected="false" aria-controls="tab-6" data-tab="tab-6">
+          <span class="tab-index">06</span>
+          <span class="tab-title">Sampel & Sampling</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-7" aria-selected="false" aria-controls="tab-7" data-tab="tab-7">
+          <span class="tab-index">07</span>
+          <span class="tab-title">Studi Kasus Utuh</span>
+        </button>
+        <button class="tab-btn" role="tab" id="tab-btn-8" aria-selected="false" aria-controls="tab-8" data-tab="tab-8">
+          <span class="tab-index">08</span>
+          <span class="tab-title">Daftar Pustaka</span>
+        </button>
+        <button class="tab-btn tab-btn-leaderboard" role="tab" id="tab-btn-leaderboard" aria-selected="false" aria-controls="tab-leaderboard" data-tab="tab-leaderboard">
+          <span class="tab-index">09</span>
+          <span class="tab-title">🏆 Papan Peringkat</span>
+        </button>
+        <button class="tab-btn tab-btn-highlight" role="tab" id="tab-btn-quiz" aria-selected="false" aria-controls="tab-quiz" data-tab="tab-quiz">
+          <span class="tab-badge">EVALUASI</span>
+          <span class="tab-title">Kuis Komprehensif</span>
+        </button>
+      </div>
+    </nav>
+  </header>
+
+  <!-- Main Content Container -->
+  <main class="main-container">
+    
+    <!-- ==========================================
+         TAB 0: DASHBOARD UTAMA & PORTAL LOGIN
+         ========================================== -->
+    <section class="tab-content active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-btn-dashboard">
+      
+      <!-- Hero Header -->
+      <div class="dash-hero text-center">
+        <div class="dash-hero-badge">
+          <span>✨ PLATFORM AKADEMIK METODOLOGI PENELITIAN KUANTITATIF</span>
+        </div>
+        <h2 class="dash-hero-title">Dashboard Pembelajaran & Evaluasi Interaktif</h2>
+        <p class="dash-hero-desc">
+          Kuasai paradigma filsafat positivisme, desain riset, operasionalisasi variabel X-Y-M-Z, teknik sampling, dan analisis SEM. Dilengkapi kuis evaluasi resmi <strong>1-kali pengerjaan</strong> serta papan peringkat kompetitif.
+        </p>
+      </div>
+
+      <!-- VIEW 1: PORTAL LOGIN GUEST (TAMPILAN PERTAMA JIKA BELUM MASUK) -->
+      <div id="dash-guest-view" class="dash-portal-wrapper">
+        <div class="dash-login-grid">
+          
+          <!-- Portal 1: Login Mahasiswa (Dengan Email Masing-Masing) -->
+          <div class="dash-portal-card card-mahasiswa">
+            <div class="dash-portal-content">
+              <div class="portal-header">
+                <div class="portal-icon-box">🎓</div>
+                <div>
+                  <div class="badge-pill badge-primary mb-1">PORTAL PESERTA TAZKIA</div>
+                  <h3 class="portal-title">Login Mahasiswa</h3>
+                  <p class="portal-sub">Masuk dengan Akun Google Kampus (@tazkia.ac.id) untuk kuis real-time</p>
+                </div>
+              </div>
+
+              <!-- Google Workspace SSO One-Click Button -->
+              <button type="button" class="btn-google-login" id="dash-btn-google-auth">
+                <svg class="google-logo-svg" viewBox="0 0 24 24">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+                </svg>
+                <span>Masuk dengan Akun Google (@tazkia.ac.id)</span>
+              </button>
+
+              <div class="auth-divider"><span>atau isi manual akun Google kampus</span></div>
+
+              <form id="dash-form-mahasiswa" class="dash-auth-form">
+                <div class="form-group">
+                  <label for="dash-mhs-nama">Nama Lengkap Mahasiswa <span class="required">*</span></label>
+                  <input type="text" id="dash-mhs-nama" class="form-control" placeholder="Contoh: Muhammad Budi Santoso" required autocomplete="name">
+                </div>
+
+                <div class="form-group">
+                  <label for="dash-mhs-email">Akun Google Email Kampus (@tazkia.ac.id) <span class="required">*</span></label>
+                  <input type="email" id="dash-mhs-email" class="form-control" placeholder="nama.mahasiswa@tazkia.ac.id" required autocomplete="email">
+                  <small class="form-help">Wajib akun Google resmi Institut Tazkia (@tazkia.ac.id). Digunakan untuk penguncian 1x kuis real-time.</small>
+                </div>
+
+                <div class="form-group">
+                  <label for="dash-mhs-nim">NIM / Nomor Induk Mahasiswa <span class="required">*</span></label>
+                  <input type="text" id="dash-mhs-nim" class="form-control" placeholder="Contoh: 20241010" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                  <label for="dash-mhs-kelas">Program Studi / Kelas (Opsional)</label>
+                  <input type="text" id="dash-mhs-kelas" class="form-control" placeholder="Contoh: Manajemen Bisnis Syariah / Metopen Kelas A">
+                </div>
+
+                <div class="callout callout-warning">
+                  <small>⏱️ <strong>Ketentuan Kuis Real-Time:</strong> Waktu <strong>20 detik per soal</strong> (otomatis lanjut jika habis), kesempatan <strong>1 (satu) kali</strong> saja, dan skor langsung tersinkronisasi di Papan Peringkat.</small>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block btn-lg">
+                  🚀 Masuk & Mulai Sesi Kuis
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- Portal 2: Login User / Dosen / Pengelola -->
+          <div class="dash-portal-card card-owner">
+            <div class="dash-portal-content">
+              <div class="portal-header">
+                <div class="portal-icon-box">👑</div>
+                <div>
+                  <div class="badge-pill badge-purple mb-1">PORTAL PENGELOLA</div>
+                  <h3 class="portal-title">Login User / Dosen</h3>
+                  <p class="portal-sub">Akses pengampu untuk evaluasi nilai, rekapitulasi, dan manajemen kelas</p>
+                </div>
+              </div>
+
+              <form id="dash-form-owner" class="dash-auth-form">
+                <div class="form-group">
+                  <label for="dash-owner-username">Username Pengelola <span class="required">*</span></label>
+                  <input type="text" id="dash-owner-username" class="form-control" placeholder="Masukkan username pengelola" required autocomplete="username">
+                </div>
+
+                <div class="form-group">
+                  <label for="dash-owner-password">Password / Kata Sandi <span class="required">*</span></label>
+                  <input type="password" id="dash-owner-password" class="form-control" placeholder="Masukkan kata sandi" required autocomplete="current-password">
+                </div>
+
+                <div class="callout callout-info">
+                  <small>👑 <strong>Hak Akses Khusus:</strong> Melihat semua rekap nilai mahasiswa, kontrol reset kesempatan ujian, ekspor data CSV, dan meninjau seluruh materi kuis tanpa batas.</small>
+                </div>
+
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">
+                  👑 Masuk sebagai User / Dosen
+                </button>
+              </form>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Quick Explore Option -->
+        <div class="guest-explore-bar text-center mt-4">
+          <p class="text-muted">
+            Ingin mempelajari materi modul terlebih dahulu sebelum login? 
+            <button type="button" class="link-styled-btn" id="dash-btn-explore-modules">Mulai Membaca Modul Materi &rarr;</button>
+          </p>
+        </div>
+      </div>
+
+      <!-- VIEW 2: SESI PENGGUNA AKTIF (TAMPIL KETIKA SUDAH LOGIN) -->
+      <div id="dash-user-view" class="dash-user-wrapper hidden">
+        <!-- Personalized Welcome Banner -->
+        <div class="dash-user-welcome-card">
+          <div class="user-welcome-info">
+            <div class="user-big-avatar" id="dash-user-avatar">🎓</div>
+            <div>
+              <div class="dash-user-role-badge mb-1" id="dash-user-role-badge">Mahasiswa Terdaftar</div>
+              <h3 class="dash-user-greeting" id="dash-user-greeting">Selamat Datang, Mahasiswa!</h3>
+              <p class="dash-user-meta" id="dash-user-meta">Email: - • NIM: -</p>
+              <div class="user-status-badges mt-2" id="dash-user-status-badges">
+                <!-- Status pill injected by JS -->
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-actions-row">
+            <button type="button" class="btn btn-primary btn-lg" id="dash-btn-main-action">
+              🚀 Mulai Kuis Evaluasi
+            </button>
+            <button type="button" class="btn btn-secondary" id="dash-btn-see-leaderboard">
+              🏆 Buka Papan Peringkat
+            </button>
+            <button type="button" class="btn btn-outline" id="dash-btn-start-study">
+              📖 Pelajari Modul
+            </button>
+            <button type="button" class="btn btn-danger-outline" id="dash-btn-logout-session">
+              Keluar Sesi
+            </button>
+          </div>
+        </div>
+
+        <!-- Class Live Metrics KPI -->
+        <div class="grid-4col mb-4">
+          <div class="kpi-card">
+            <span class="kpi-label">Total Peserta Selesai:</span>
+            <strong class="kpi-val text-primary" id="dash-stat-total">0</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Rata-Rata Nilai:</span>
+            <strong class="kpi-val text-purple" id="dash-stat-avg">0.0</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Nilai Tertinggi:</span>
+            <strong class="kpi-val text-green" id="dash-stat-max">0</strong>
+          </div>
+          <div class="kpi-card">
+            <span class="kpi-label">Tingkat Kelulusan:</span>
+            <strong class="kpi-val text-cyan" id="dash-stat-pass">0%</strong>
+          </div>
+        </div>
+      </div>
+
+      <!-- Roadmap / 8 Modul Pembelajaran -->
+      <div class="dash-roadmap-section mt-6">
+        <div class="flex-between mb-3">
+          <div>
+            <h3 class="section-title-sm">Alur Pembelajaran Modul Metodologi</h3>
+            <p class="text-muted">Pelajari seluruh 8 bagian materi sebelum menempuh evaluasi kuis 1-kali kesempatan.</p>
+          </div>
+          <span class="badge-pill">8 Bagian Komprehensif</span>
+        </div>
+
+        <div class="dash-modules-grid">
+          <div class="dash-module-card" data-goto="tab-1">
+            <div class="dash-mod-num">01</div>
+            <h4>Karakteristik Kuantitatif</h4>
+            <p>Paradigma positivisme, deduktif, instrumen baku tertutup, dan simulasi skala Likert.</p>
+            <span class="dash-mod-link">Pelajari Bagian 1 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-2">
+            <div class="dash-mod-num">02</div>
+            <h4>Tujuan Penelitian</h4>
+            <p>Pengukuran objektif, pengujian hipotesis, kausalitas, dan generalisasi populasi.</p>
+            <span class="dash-mod-link">Pelajari Bagian 2 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-3">
+            <div class="dash-mod-num">03</div>
+            <h4>Desain Riset</h4>
+            <p>Eksperimen vs Non-Eksperimen (Survei, Korelasional, Kausal Komparatif).</p>
+            <span class="dash-mod-link">Pelajari Bagian 3 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-4">
+            <div class="dash-mod-num">04</div>
+            <h4>Variabel X - Y - Z - M</h4>
+            <p>Independen, dependen, mediasi, moderator, dan simulator diagram kausalitas interaktif.</p>
+            <span class="dash-mod-link">Pelajari Bagian 4 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-5">
+            <div class="dash-mod-num">05</div>
+            <h4>Populasi Riset</h4>
+            <p>Wilayah generalisasi, kriteria inklusi/eksklusi, dan kalkulator rumus Slovin real-time.</p>
+            <span class="dash-mod-link">Pelajari Bagian 5 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-6">
+            <div class="dash-mod-num">06</div>
+            <h4>Sampel & Teknik Sampling</h4>
+            <p>Probability vs Non-Probability sampling, simulator visual interaktif 250 populasi.</p>
+            <span class="dash-mod-link">Pelajari Bagian 6 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-7">
+            <div class="dash-mod-num">07</div>
+            <h4>Studi Kasus Utuh SEM</h4>
+            <p>Riset empiris PT Tekno Utama: analisis outer model & inner model PLS-SEM.</p>
+            <span class="dash-mod-link">Pelajari Bagian 7 &rarr;</span>
+          </div>
+
+          <div class="dash-module-card" data-goto="tab-8">
+            <div class="dash-mod-num">08</div>
+            <h4>Daftar Pustaka</h4>
+            <p>Sitasi baku APA style (Sugiyono, Creswell, Sekaran, Hair, dll) dengan fitur 1-klik salin.</p>
+            <span class="dash-mod-link">Pelajari Bagian 8 &rarr;</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==========================================
+         TAB 1: KARAKTERISTIK PENELITIAN KUANTITATIF
+         ========================================== -->
+    <section class="tab-content" id="tab-1" role="tabpanel" aria-labelledby="tab-btn-1">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 1 • Fondasi Metodologis</div>
+        <h2 class="section-title">Karakteristik Penelitian Kuantitatif</h2>
+        <p class="section-subtitle">
+          Memahami paradigma filsafat positivisme, logika deduktif, dan ketepatan instrumen pengukuran numerik menurut standar baku penelitian ilmiah.
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Card 1: Konsep Inti -->
+        <div class="card card-accent-blue">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <h3 class="card-title">Ciri Kunci & Landasan Filosofis</h3>
+          <p class="card-text">
+            Penelitian kuantitatif berakar kuat pada filsafat <strong>Positivisme</strong>, yaitu pandangan bahwa realitas itu nyata, objektif, dapat dipecah menjadi variabel-variabel, dan dapat diukur secara eksak menggunakan angka serta uji statistik.
+          </p>
+          <ul class="feature-list">
+            <li>
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Pendekatan Deduktif:</strong> Berangkat dari teori umum yang sudah mapan &rarr; merumuskan hipotesis &rarr; mengumpulkan data &rarr; menguji kebenaran hipotesis.
+              </div>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Alur Terstruktur & Baku:</strong> Desain, kuesioner, dan metode analisis telah ditetapkan secara ketat sebelum terjun ke lapangan dan tidak dapat diubah seenaknya.
+              </div>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Objektivitas Tinggi:</strong> Peneliti menjaga jarak netral dengan objek kajian untuk meniadakan subjektivitas dan bias personal.
+              </div>
+            </li>
+            <li>
+              <span class="bullet-check">✓</span>
+              <div>
+                <strong>Instrumen Tertutup:</strong> Menggunakan alat ukur terstandar seperti kuesioner berskala, tes terstandar, atau alat sensor numerik.
+              </div>
+            </li>
+          </ul>
+          <div class="citation-tag">Sumber Rujukan: Sugiyono (2018)</div>
+        </div>
+
+        <!-- Card 2: Interactive Likert Simulator -->
+        <div class="card card-interactive">
+          <div class="card-icon icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          </div>
+          <h3 class="card-title">Simulasi Interaktif: Instrumen Skala Likert 1–5</h3>
+          <p class="card-text">
+            Cobalah isi instrumen kepuasan layanan <em>e-commerce</em> di bawah ini untuk melihat bagaimana data numerik dikuantifikasi dan dihitung rata-rata skornya secara <em>real-time</em>:
+          </p>
+
+          <div class="simulator-box" id="likert-sim-box">
+            <div class="likert-item">
+              <label class="likert-question">1. Kecepatan pengiriman pesanan memenuhi ekspektasi Anda:</label>
+              <div class="likert-options" data-question="q1">
+                <button type="button" class="likert-btn" data-val="1">1 (STS)</button>
+                <button type="button" class="likert-btn" data-val="2">2 (TS)</button>
+                <button type="button" class="likert-btn active" data-val="3">3 (N)</button>
+                <button type="button" class="likert-btn" data-val="4">4 (S)</button>
+                <button type="button" class="likert-btn" data-val="5">5 (SS)</button>
+              </div>
+            </div>
+
+            <div class="likert-item">
+              <label class="likert-question">2. Antarmuka aplikasi mudah digunakan dan responsif:</label>
+              <div class="likert-options" data-question="q2">
+                <button type="button" class="likert-btn" data-val="1">1 (STS)</button>
+                <button type="button" class="likert-btn" data-val="2">2 (TS)</button>
+                <button type="button" class="likert-btn" data-val="3">3 (N)</button>
+                <button type="button" class="likert-btn active" data-val="4">4 (S)</button>
+                <button type="button" class="likert-btn" data-val="5">5 (SS)</button>
+              </div>
+            </div>
+
+            <div class="likert-item">
+              <label class="likert-question">3. Layanan pelanggan cepat tanggap menyelesaikan kendala:</label>
+              <div class="likert-options" data-question="q3">
+                <button type="button" class="likert-btn" data-val="1">1 (STS)</button>
+                <button type="button" class="likert-btn" data-val="2">2 (TS)</button>
+                <button type="button" class="likert-btn" data-val="3">3 (N)</button>
+                <button type="button" class="likert-btn" data-val="4">4 (S)</button>
+                <button type="button" class="likert-btn active" data-val="5">5 (SS)</button>
+              </div>
+            </div>
+
+            <div class="sim-output">
+              <div class="sim-metric">
+                <span class="sim-metric-label">Rata-rata Skor (Mean):</span>
+                <span class="sim-metric-val" id="likert-mean-score">4.00</span>
+              </div>
+              <div class="sim-metric">
+                <span class="sim-metric-label">Kategori Penilaian:</span>
+                <span class="sim-metric-badge" id="likert-category-badge">Puas (Tinggi)</span>
+              </div>
+            </div>
+            <div class="sim-note">
+              <em>Keterangan:</em> Skala 1 (Sangat Tidak Setuju) sampai 5 (Sangat Setuju). Dalam riset kuantitatif, nilai skor ini kemudian diuji validitas, reliabilitas, dan uji normalitasnya.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Comparison Section: Kuantitatif vs Kualitatif -->
+      <div class="card mt-6">
+        <h3 class="card-title">Matriks Pembeda: Paradigma Kuantitatif vs Kualitatif</h3>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Dimensi Perbandingan</th>
+                <th>Pendekatan Kuantitatif</th>
+                <th>Pendekatan Kualitatif</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Landasan Filosofis</strong></td>
+                <td><span class="badge badge-primary">Positivisme</span> (Realitas tunggal, objektif, terukur)</td>
+                <td><span class="badge badge-secondary">Konstruktivisme / Fenomenologi</span> (Realitas majemuk, subjektif)</td>
+              </tr>
+              <tr>
+                <td><strong>Logika Penalaran</strong></td>
+                <td><strong>Deduktif</strong> (Menguji teori yang sudah ada)</td>
+                <td><strong>Induktif</strong> (Membangun teori dari data lapangan)</td>
+              </tr>
+              <tr>
+                <td><strong>Bentuk Data</strong></td>
+                <td>Numerik, angka, skor skala, metrik statistik</td>
+                <td>Deskripsi verbal, transkrip wawancara, narasi, artefak visual</td>
+              </tr>
+              <tr>
+                <td><strong>Instrumen Riset</strong></td>
+                <td>Kuesioner tertutup, instrumen tes terstandar</td>
+                <td>Peneliti itu sendiri sebagai instrumen utama (<em>human instrument</em>)</td>
+              </tr>
+              <tr>
+                <td><strong>Fokus Analisis</strong></td>
+                <td>Generalisasi hasil sampel ke populasi target</td>
+                <td>Kedalaman makna kontekstual spesifik</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn next-step" data-next="tab-2">
+          Lanjut ke Bagian 2: Tujuan Penelitian &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 2: TUJUAN PENELITIAN KUANTITATIF
+         ========================================== -->
+    <section class="tab-content" id="tab-2" role="tabpanel" aria-labelledby="tab-btn-2">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 2 • Arah & Sasaran Riset</div>
+        <h2 class="section-title">Tujuan Penelitian Kuantitatif</h2>
+        <p class="section-subtitle">
+          Bukan untuk menggali makna subjektif atau riwayat mendalam, melainkan menetapkan parameter presisi, menguji relasi kausalitas, dan membuat generalisasi populasi.
+        </p>
+      </div>
+
+      <div class="grid-4col">
+        <div class="goal-card">
+          <div class="goal-number">01</div>
+          <h3 class="goal-title">Pengukuran Presisi</h3>
+          <p class="goal-desc">
+            Mengukur variabel secara matematis dan terstandardisasi dengan angka yang pasti untuk menghilangkan multitafsir.
+          </p>
+          <div class="goal-example">
+            <strong>Contoh:</strong> Mengukur skor konsentrasi belajar siswa (rentang 0–100) menggunakan tes atensi kognitif.
+          </div>
+        </div>
+
+        <div class="goal-card">
+          <div class="goal-number">02</div>
+          <h3 class="goal-title">Pengujian Teori & Hipotesis</h3>
+          <p class="goal-desc">
+            Mengonfirmasi apakah asumsi teoritis yang diajukan terbukti secara empiris melalui signifikansi statistik ($p$-value).
+          </p>
+          <div class="goal-example">
+            <strong>Contoh:</strong> Menguji hipotesis: "Ada pengaruh negatif signifikan antara durasi media sosial terhadap konsentrasi".
+          </div>
+        </div>
+
+        <div class="goal-card">
+          <div class="goal-number">03</div>
+          <h3 class="goal-title">Eksplanasi Kausalitas</h3>
+          <p class="goal-desc">
+            Menentukan kekuatan hubungan timbal balik atau pengaruh sebab-akibat langsung dan tidak langsung antarvariabel.
+          </p>
+          <div class="goal-example">
+            <strong>Contoh:</strong> Menghitung nilai koefisien regresi ($R^2$) untuk mengetahui seberapa besar varians $Y$ dijelaskan oleh $X$.
+          </div>
+        </div>
+
+        <div class="goal-card">
+          <div class="goal-number">04</div>
+          <h3 class="goal-title">Generalisasi Populasi</h3>
+          <p class="goal-desc">
+            Menarik kesimpulan dari sampel representatif agar temuan tersebut dapat diberlakukan secara luas pada seluruh populasi target.
+          </p>
+          <div class="goal-example">
+            <strong>Contoh:</strong> Hasil survei 300 siswa dapat digeneralisasi untuk mewakili seluruh 1.200 siswa di sekolah tersebut.
+          </div>
+        </div>
+      </div>
+
+      <!-- Case study box for Purpose -->
+      <div class="card mt-6 card-accent-green">
+        <div class="card-icon icon-green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 14 14"></polyline></svg>
+        </div>
+        <h3 class="card-title">Studi Refleksi: Mengapa Tidak Menggali Makna Subjektif?</h3>
+        <p class="card-text">
+          Menurut <strong>Creswell & Creswell (2018)</strong>, penelitian kuantitatif sengaja tidak dirancang untuk menelusuri perasaan emosional personal, pengalaman eksistensial, atau pergulatan batin individu. Fokus utamanya adalah <strong>inferensi statistik</strong>: menemukan pola teratur berskala makro yang dapat diuji ulang (<em>replicable</em>) dan diandalkan untuk pengambilan kebijakan berbasis data.
+        </p>
+        <div class="interactive-toggle-container mt-4">
+          <div class="callout callout-info">
+            <strong>💡 Insight Penting:</strong> Jika tujuan penelitian Anda berbunyi <em>"Memahami bagaimana pengalaman batin seorang pasien menghadapi vonis penyakit"</em> &rarr; Gunakan <strong>Kualitatif Fenomenologi</strong>. Namun jika tujuannya <em>"Mengukur pengaruh terapi obat A terhadap penurunan skor kecemasan pasien"</em> &rarr; Wajib menggunakan <strong>Kuantitatif</strong>.
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-1">&larr; Kembali ke Karakteristik</button>
+        <button class="nav-step-btn next-step" data-next="tab-3">Lanjut ke Bagian 3: Desain Riset &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 3: DESAIN PENELITIAN KUANTITATIF
+         ========================================== -->
+    <section class="tab-content" id="tab-3" role="tabpanel" aria-labelledby="tab-btn-3">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 3 • Cetak Biru Metodologi</div>
+        <h2 class="section-title">Desain Penelitian Kuantitatif</h2>
+        <p class="section-subtitle">
+          Rencana terstruktur untuk mengumpulkan dan menganalisis data empiris guna menjawab rumusan masalah secara akurat (Cohen et al., 2017).
+        </p>
+      </div>
+
+      <!-- Interactive Design Switcher -->
+      <div class="design-tabs-container">
+        <div class="design-switcher">
+          <button type="button" class="design-tab-btn active" data-design="eksperimen">
+            <span class="design-icon">🧪</span>
+            <span>Penelitian Eksperimen</span>
+          </button>
+          <button type="button" class="design-tab-btn" data-design="korelasional">
+            <span class="design-icon">📈</span>
+            <span>Penelitian Korelasional</span>
+          </button>
+          <button type="button" class="design-tab-btn" data-design="survei">
+            <span class="design-icon">📋</span>
+            <span>Penelitian Survei (Deskriptif)</span>
+          </button>
+        </div>
+
+        <!-- Panel Eksperimen -->
+        <div class="design-panel active" id="design-panel-eksperimen">
+          <div class="grid-2col">
+            <div>
+              <div class="panel-badge badge-warning">Manipulasi & Intervensi Aktif</div>
+              <h3 class="panel-title">Penelitian Eksperimen (Experimental Design)</h3>
+              <p class="panel-desc">
+                Desain di mana peneliti sengaja memberikan perlakuan khusus (<em>treatment / intervention</em>) pada kelompok eksperimen, lalu membandingkannya dengan kelompok kontrol yang tidak diberi perlakuan atau diberi metode konvensional.
+              </p>
+              <div class="feature-checklist">
+                <div class="check-item"><strong>Ciri Utama:</strong> Ada kontrol variabel luar, manipulasi variabel independen, dan pengamatan dampak pada variabel dependen.</div>
+                <div class="check-item"><strong>Kelebihan:</strong> Menjadi standar tertinggi (<em>gold standard</em>) untuk membuktikan hubungan sebab-akibat (kausalitas murni).</div>
+                <div class="check-item"><strong>Contoh Konkret:</strong> Menguji efektivitas metode pembelajaran <em>AI-Interactive</em> (Kelompok Eksperimen) dibandingkan metode ceramah konvensional (Kelompok Kontrol) terhadap hasil belajar matematika siswa SMA.</div>
+              </div>
+            </div>
+            <div class="schematic-box">
+              <div class="schematic-title">Skema Alur Desain Eksperimen:</div>
+              <div class="schematic-flow">
+                <div class="flow-node">
+                  <div class="node-title">Kelompok Eksperimen</div>
+                  <div class="node-badge">Pre-Test ($O_1$)</div>
+                  <div class="node-action">&darr; Intervensi AI ($X$)</div>
+                  <div class="node-badge">Post-Test ($O_2$)</div>
+                </div>
+                <div class="flow-vs">VS</div>
+                <div class="flow-node">
+                  <div class="node-title">Kelompok Kontrol</div>
+                  <div class="node-badge">Pre-Test ($O_3$)</div>
+                  <div class="node-action">&darr; Metode Ceramah</div>
+                  <div class="node-badge">Post-Test ($O_4$)</div>
+                </div>
+              </div>
+              <div class="flow-formula">Efektivitas = $(O_2 - O_1) - (O_4 - O_3)$</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Korelasional -->
+        <div class="design-panel" id="design-panel-korelasional">
+          <div class="grid-2col">
+            <div>
+              <div class="panel-badge badge-primary">Observasi Asosiasi Non-Intervensi</div>
+              <h3 class="panel-title">Penelitian Korelasional (Correlational Design)</h3>
+              <p class="panel-desc">
+                Peneliti mengukur dua atau lebih variabel pada kondisi alami <strong>tanpa memberikan manipulasi atau perlakuan</strong>, guna mengetahui arah dan kekuatan hubungan derajat keterkaitan antarvariabel.
+              </p>
+              <div class="feature-checklist">
+                <div class="check-item"><strong>Ciri Utama:</strong> Tidak ada kelompok kontrol; data diambil secara simultan menggunakan instrumen pengukuran.</div>
+                <div class="check-item"><strong>Indikator Analisis:</strong> Koefisien korelasi Pearson ($r$) atau Spearman ($rho$) dengan rentang $-1.00$ hingga $+1.00$.</div>
+                <div class="check-item"><strong>Contoh Konkret:</strong> Mengukur korelasi antara frekuensi olahraga mingguan ($X$) dengan tingkat tekanan darah sistolik ($Y$) pada orang dewasa usia 40–50 tahun.</div>
+              </div>
+            </div>
+            <div class="schematic-box">
+              <div class="schematic-title">Pola Hubungan Korelasi:</div>
+              <div class="correlation-types">
+                <div class="corr-card">
+                  <div class="corr-val text-green">+0.85</div>
+                  <div class="corr-lbl">Korelasi Positif Kuat</div>
+                  <small>Variabel $X \uparrow$ diikuti $Y \uparrow$</small>
+                </div>
+                <div class="corr-card">
+                  <div class="corr-val text-muted">0.02</div>
+                  <div class="corr-lbl">Tidak Ada Korelasi</div>
+                  <small>Variabel $X$ dan $Y$ independen</small>
+                </div>
+                <div class="corr-card">
+                  <div class="corr-val text-rose">-0.78</div>
+                  <div class="corr-lbl">Korelasi Negatif Kuat</div>
+                  <small>Variabel $X \uparrow$ diikuti $Y \downarrow$</small>
+                </div>
+              </div>
+              <div class="callout-small mt-3">
+                ⚠️ <em>Ingat Kaidah Klasik:</em> <strong>"Correlation does not imply causation"</strong> (Korelasi tidak selalu berarti hubungan sebab-akibat langsung).
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel Survei -->
+        <div class="design-panel" id="design-panel-survei">
+          <div class="grid-2col">
+            <div>
+              <div class="panel-badge badge-secondary">Pemetaan Karakteristik Populasi Besar</div>
+              <h3 class="panel-title">Penelitian Survei / Deskriptif (Survey Design)</h3>
+              <p class="panel-desc">
+                Peneliti mengumpulkan data dari sampel yang relatif besar menggunakan kuesioner terstandar untuk memotret tren, karakteristik demografis, opini, atau perilaku dari suatu populasi secara deskriptif.
+              </p>
+              <div class="feature-checklist">
+                <div class="check-item"><strong>Ciri Utama:</strong> Efisien mencakup wilayah geografis yang luas, menghasilkan data persentase, frekuensi, mean, dan cross-tabulation.</div>
+                <div class="check-item"><strong>Pendekatan Waktu:</strong> Dapat berupa <em>Cross-Sectional</em> (satu kali potret waktu) atau <em>Longitudinal</em> (berkelanjutan).</div>
+                <div class="check-item"><strong>Contoh Konkret:</strong> Survei nasional untuk memetakan tingkat literasi keuangan masyarakat di 10 kota metropolitan di Indonesia.</div>
+              </div>
+            </div>
+            <div class="schematic-box">
+              <div class="schematic-title">Karakteristik Metrik Survei:</div>
+              <div class="survey-stat-preview">
+                <div class="stat-row">
+                  <span>Literasi Keuangan Tinggi</span>
+                  <div class="stat-bar-container"><div class="stat-bar" style="width: 32%">32%</div></div>
+                </div>
+                <div class="stat-row">
+                  <span>Literasi Keuangan Sedang</span>
+                  <div class="stat-bar-container"><div class="stat-bar" style="width: 48%">48%</div></div>
+                </div>
+                <div class="stat-row">
+                  <span>Literasi Keuangan Rendah</span>
+                  <div class="stat-bar-container"><div class="stat-bar" style="width: 20%">20%</div></div>
+                </div>
+              </div>
+              <div class="citation-tag mt-4">Referensi Desain: Cohen, Manion, & Morrison (2017)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-2">&larr; Kembali ke Tujuan</button>
+        <button class="nav-step-btn next-step" data-next="tab-4">Lanjut ke Bagian 4: Variabel &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 4: VARIABEL PENELITIAN
+         ========================================== -->
+    <section class="tab-content" id="tab-4" role="tabpanel" aria-labelledby="tab-btn-4">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 4 • Blok Pembangun Teori</div>
+        <h2 class="section-title">Variabel Penelitian & Model Struktural</h2>
+        <p class="section-subtitle">
+          Atribut atau nilai dari objek yang memiliki variasi tertentu yang ditetapkan peneliti untuk dipelajari dan ditarik kesimpulan (Sekaran & Bougie, 2016).
+        </p>
+      </div>
+
+      <!-- 4 Types of Variables Cards -->
+      <div class="grid-4col">
+        <div class="var-badge-card" data-type="independen">
+          <div class="var-tag var-tag-x">Variabel Bebas (X)</div>
+          <h3 class="var-name">Independen</h3>
+          <p class="var-desc">
+            Variabel yang mempengaruhi, menjelaskan, atau menjadi stimulus/sebab terjadinya perubahan pada variabel lain.
+          </p>
+          <div class="var-example-box">
+            <strong>Contoh:</strong><br>Intensitas Paparan Iklan Digital
+          </div>
+        </div>
+
+        <div class="var-badge-card" data-type="dependen">
+          <div class="var-tag var-tag-y">Variabel Terikat (Y)</div>
+          <h3 class="var-name">Dependen</h3>
+          <p class="var-desc">
+            Variabel yang dipengaruhi, menjadi akibat, atau menjadi respon utama yang ingin diprediksi oleh peneliti.
+          </p>
+          <div class="var-example-box">
+            <strong>Contoh:</strong><br>Minat Beli Konsumen
+          </div>
+        </div>
+
+        <div class="var-badge-card" data-type="moderator">
+          <div class="var-tag var-tag-mod">Variabel Pengubah (M)</div>
+          <h3 class="var-name">Moderator</h3>
+          <p class="var-desc">
+            Variabel yang <strong>memperkuat atau memperlemah</strong> hubungan kontingensi antara variabel bebas dan terikat.
+          </p>
+          <div class="var-example-box">
+            <strong>Contoh:</strong><br>Tingkat Pendapatan Konsumen
+          </div>
+        </div>
+
+        <div class="var-badge-card" data-type="intervening">
+          <div class="var-tag var-tag-med">Variabel Jembatan (Z)</div>
+          <h3 class="var-name">Intervening / Mediasi</h3>
+          <p class="var-desc">
+            Variabel penyela yang menjembatani pengaruh $X$ ke $Y$ secara <strong>tidak langsung</strong> dalam rantai kausal.
+          </p>
+          <div class="var-example-box">
+            <strong>Contoh:</strong><br>Kepercayaan Konsumen (Trust)
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Structural Relationship Visualizer -->
+      <div class="card mt-6 card-interactive">
+        <div class="flex-between">
+          <div>
+            <h3 class="card-title">Simulator Interaktif: Diagram Alur Relasi Variabel</h3>
+            <p class="card-text">
+              Klik tombol kontrol di bawah ini untuk melihat bagaimana jalur hubungan antarvariabel bekerja secara dinamis dalam model riset pemasaran digital:
+            </p>
+          </div>
+          <div class="sim-controls">
+            <button type="button" class="btn-toggle active" id="toggle-path-direct">Jalur Langsung (X &rarr; Y)</button>
+            <button type="button" class="btn-toggle active" id="toggle-path-mediasi">Jalur Mediasi (X &rarr; Z &rarr; Y)</button>
+            <button type="button" class="btn-toggle active" id="toggle-path-moderasi">Efek Moderasi (M)</button>
+          </div>
+        </div>
+
+        <!-- SVG Diagram Visualizer -->
+        <div class="diagram-canvas-container" id="variable-diagram-box">
+          <div class="model-canvas">
+            <!-- Node X -->
+            <div class="model-node node-x" id="node-x">
+              <span class="node-badge-lbl">Variabel Independen (X)</span>
+              <h4>Paparan Iklan Digital</h4>
+              <p>Stimulus awal promosi</p>
+            </div>
+
+            <!-- Mediator Node Z -->
+            <div class="model-node node-z" id="node-z">
+              <span class="node-badge-lbl">Variabel Mediasi (Z)</span>
+              <h4>Kepercayaan Konsumen</h4>
+              <p>Mekanisme perantara internal</p>
+            </div>
+
+            <!-- Node Y -->
+            <div class="model-node node-y" id="node-y">
+              <span class="node-badge-lbl">Variabel Dependen (Y)</span>
+              <h4>Minat Beli Konsumen</h4>
+              <p>Perilaku keputusan akhir</p>
+            </div>
+
+            <!-- Moderator Node M -->
+            <div class="model-node node-m" id="node-m">
+              <span class="node-badge-lbl">Variabel Moderator (M)</span>
+              <h4>Tingkat Pendapatan</h4>
+              <p>Faktor penguat hubungan</p>
+            </div>
+
+            <!-- Connective SVG Lines -->
+            <svg class="diagram-svg" viewBox="0 0 800 360" preserveAspectRatio="none">
+              <defs>
+                <marker id="arrow-direct" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#6366f1"/>
+                </marker>
+                <marker id="arrow-med" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#06b6d4"/>
+                </marker>
+                <marker id="arrow-mod" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+                  <path d="M 0 0 L 10 5 L 0 10 z" fill="#f59e0b"/>
+                </marker>
+              </defs>
+
+              <!-- Line 1: Direct X -> Y -->
+              <path id="svg-line-direct" class="svg-path path-direct active" d="M 190 260 L 610 260" marker-end="url(#arrow-direct)" />
+              <text id="svg-txt-direct" x="400" y="285" text-anchor="middle" class="path-text">Jalur Langsung (c'): koefisien = 0.28*</text>
+
+              <!-- Line 2: X -> Z -->
+              <path id="svg-line-xz" class="svg-path path-med active" d="M 160 210 Q 240 100 320 90" marker-end="url(#arrow-med)" />
+              <text id="svg-txt-xz" x="220" y="130" text-anchor="middle" class="path-text">Jalur a: 0.52***</text>
+
+              <!-- Line 3: Z -> Y -->
+              <path id="svg-line-zy" class="svg-path path-med active" d="M 480 90 Q 560 100 640 210" marker-end="url(#arrow-med)" />
+              <text id="svg-txt-zy" x="580" y="130" text-anchor="middle" class="path-text">Jalur b: 0.44***</text>
+
+              <!-- Line 4: Moderator down to line X -> Y -->
+              <path id="svg-line-mod" class="svg-path path-mod active" d="M 400 310 L 400 265" marker-end="url(#arrow-mod)" />
+              <text id="svg-txt-mod" x="400" y="340" text-anchor="middle" class="path-text">Moderasi: Menguat saat Pendapatan Tinggi</text>
+            </svg>
+          </div>
+
+          <div class="diagram-explanation" id="diagram-explain-box">
+            <strong>Penjelasan Jalur:</strong> Konsumen melihat iklan ($X$), yang secara langsung dapat memicu minat beli ($Y$). Namun iklan juga membangun rasa percaya ($Z$), dan rasa percaya itulah yang mendongkrak minat beli secara jauh lebih kokoh (<em>Indirect Effect</em>: $0.52 \times 0.44 = 0.228$). Selain itu, bagi konsumen berpendapatan tinggi ($M$), dorongan iklan terhadap minat beli menjadi berlipat ganda.
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-3">&larr; Kembali ke Desain Riset</button>
+        <button class="nav-step-btn next-step" data-next="tab-5">Lanjut ke Bagian 5: Populasi &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 5: POPULASI PENELITIAN
+         ========================================== -->
+    <section class="tab-content" id="tab-5" role="tabpanel" aria-labelledby="tab-btn-5">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 5 • Batas Wilayah Generalisasi</div>
+        <h2 class="section-title">Populasi Penelitian</h2>
+        <p class="section-subtitle">
+          Wilayah generalisasi yang terdiri dari objek atau subjek yang memiliki kuantitas dan karakteristik tertentu sesuai kriteria yang ditetapkan peneliti (Subhaktiyasa, 2024; Arikunto, 2019).
+        </p>
+      </div>
+
+      <div class="grid-2col">
+        <!-- Card 1: Konsep Populasi -->
+        <div class="card card-accent-blue">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3 class="card-title">Definisi & Batasan Kritis Populasi</h3>
+          <p class="card-text">
+            Populasi dalam penelitian kuantitatif <strong>bukan sekadar jumlah orang</strong>, melainkan mencakup seluruh anggota kelompok yang menjadi target akhir tempat temuan penelitian akan digeneralisasikan.
+          </p>
+          <div class="feature-checklist">
+            <div class="check-item">
+              <strong>Kriteria Inklusi & Eksklusi:</strong> Peneliti harus mendefinisikan batasan jelas siapa yang berhak masuk ke dalam populasi.
+            </div>
+            <div class="check-item">
+              <strong>Populasi Target vs Populasi Terjangkau:</strong> Populasi target adalah kelompok ideal luas (misal: seluruh perawat di Indonesia), sedangkan populasi terjangkau adalah kelompok konkret yang dapat diakses (misal: seluruh 250 perawat di RS X).
+            </div>
+            <div class="check-item">
+              <strong>Contoh Riil di Lapangan:</strong> Jika peneliti meneliti tingkat stres kerja perawat di sebuah rumah sakit swasta tipe B, maka populasinya adalah <em>"seluruh 250 perawat tetap di Rumah Sakit X pada tahun 2024"</em>.
+            </div>
+          </div>
+          <div class="citation-tag mt-3">Rujukan: Arikunto (2019); Subhaktiyasa (2024)</div>
+        </div>
+
+        <!-- Card 2: Interactive Slovin Formula Calculator -->
+        <div class="card card-interactive">
+          <div class="card-icon icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"></rect><line x1="8" y1="6" x2="16" y2="6"></line><line x1="16" y1="14" x2="16" y2="14.01"></line><path d="M16 10h.01M12 10h.01M8 10h.01M12 14h.01M8 14h.01M12 18h.01M8 18h.01"></path></svg>
+          </div>
+          <h3 class="card-title">Kalkulator Interaktif: Ukuran Sampel dari Populasi (Rumus Slovin)</h3>
+          <p class="card-text">
+            Gunakan kalkulator ini untuk menghitung kebutuhan sampel minimum ($n$) berdasarkan jumlah populasi ($N$) dan tingkat presisi/toleransi kesalahan ($e$):
+          </p>
+
+          <div class="calculator-form">
+            <div class="form-group">
+              <label for="calc-pop-input">Jumlah Populasi ($N$):</label>
+              <input type="number" id="calc-pop-input" class="form-control" value="250" min="10" max="100000">
+              <small class="form-help">Contoh: 250 perawat tetap RS X</small>
+            </div>
+
+            <div class="form-group">
+              <label for="calc-error-select">Taraf Toleransi Kesalahan / Margin of Error ($e$):</label>
+              <select id="calc-error-select" class="form-control">
+                <option value="0.01">1% (Tingkat Ketelitian Sangat Tinggi / 99%)</option>
+                <option value="0.05" selected>5% (Standar Penelitian Sosial / 95%)</option>
+                <option value="0.10">10% (Toleransi Luas / 90%)</option>
+              </select>
+            </div>
+
+            <div class="calc-formula-display">
+              $$n = \frac{N}{1 + N(e)^2}$$
+            </div>
+
+            <div class="calc-result-box">
+              <div class="result-number">
+                <span id="calc-sample-result">154</span>
+                <span class="result-unit">Responden</span>
+              </div>
+              <p class="result-interpretation" id="calc-sample-desc">
+                Dari total <strong>250</strong> perawat, Anda membutuhkan minimal <strong>154</strong> sampel responden untuk mempertahankan margin of error 5%.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-4">&larr; Kembali ke Variabel</button>
+        <button class="nav-step-btn next-step" data-next="tab-6">Lanjut ke Bagian 6: Sampel & Sampling &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 6: SAMPEL & TEKNIK SAMPLING
+         ========================================== -->
+    <section class="tab-content" id="tab-6" role="tabpanel" aria-labelledby="tab-btn-6">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 6 • Representasi & Presisi</div>
+        <h2 class="section-title">Sampel Penelitian & Teknik Sampling</h2>
+        <p class="section-subtitle">
+          Bagian representatif dari populasi yang diambil karena pertimbangan efisiensi waktu, biaya, dan daya jangkau peneliti (Asrulla et al., 2023; Hair et al., 2019).
+        </p>
+      </div>
+
+      <!-- Sampling Comparison Cards -->
+      <div class="grid-2col">
+        <div class="card card-accent-blue">
+          <div class="card-icon">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"></path></svg>
+          </div>
+          <div class="badge badge-primary mb-2">Peluang Sama</div>
+          <h3 class="card-title">1. Probability Sampling (Teknik Acak)</h3>
+          <p class="card-text">
+            Setiap unsur dalam populasi memiliki <strong>peluang (probabilitas) yang sama dan diketahui</strong> untuk terpilih menjadi sampel. Syarat mutlak generalisasi populasi tanpa bias pemilihan.
+          </p>
+          <ul class="method-sublist">
+            <li><strong>Simple Random Sampling:</strong> Pemilihan acak murni (contoh: undian/aplikasi acak 100 dari 250 perawat).</li>
+            <li><strong>Stratified Random Sampling:</strong> Populasi dibagi berdasarkan strata/kelompok (misal: jenjang jabatan), lalu diambil proporsional acak.</li>
+            <li><strong>Cluster Sampling:</strong> Pengambilan acak berdasarkan area/kelompok geografis.</li>
+            <li><strong>Systematic Sampling:</strong> Pengambilan berdasarkan kelipatan nomor urut tertentu ($k = N/n$).</li>
+          </ul>
+        </div>
+
+        <div class="card card-accent-purple">
+          <div class="card-icon icon-purple">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="badge badge-secondary mb-2">Kriteria Spesifik</div>
+          <h3 class="card-title">2. Non-Probability Sampling (Tidak Acak)</h3>
+          <p class="card-text">
+            Tidak semua anggota populasi memiliki peluang yang sama. Pemilihan ditentukan secara terarah berdasarkan kriteria keahlian, keterjangkauan, atau kemudahan peneliti.
+          </p>
+          <ul class="method-sublist">
+            <li><strong>Purposive Sampling:</strong> Sampel dipilih berdasar kriteria ketat relevan (contoh: hanya 40 perawat UGD dengan masa kerja &ge; 3 tahun).</li>
+            <li><strong>Convenience / Accidental:</strong> Memilih responden yang paling mudah ditemui atau diakses.</li>
+            <li><strong>Quota Sampling:</strong> Pengambilan sampel hingga kuota jumlah tertentu terpenuhi.</li>
+            <li><strong>Snowball Sampling:</strong> Penentuan sampel berantai dari satu responden ke responden berikutnya.</li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Live Sampling Simulator Arena -->
+      <div class="card mt-6 card-interactive">
+        <div class="flex-between">
+          <div>
+            <h3 class="card-title">Arena Simulasi: Eksperimen Pengambilan Sampel dari 250 Populasi</h3>
+            <p class="card-text">
+              Di bawah ini adalah representasi 250 perawat RS X. Klik metode sampling untuk melihat bagaimana algoritma memilih responden secara visual:
+            </p>
+          </div>
+          <div class="sampling-actions">
+            <button type="button" class="btn btn-primary" id="btn-sim-random">
+              🎲 Simulasikan Simple Random (100 Acak)
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-sim-purposive">
+              🎯 Simulasikan Purposive (40 Perawat UGD &ge; 3 Thn)
+            </button>
+            <button type="button" class="btn btn-outline" id="btn-reset-dots">
+              ↺ Reset Populasi
+            </button>
+          </div>
+        </div>
+
+        <div class="simulation-legend">
+          <div class="legend-item"><span class="legend-dot dot-normal"></span> Populasi Perawat Biasa (210 orang)</div>
+          <div class="legend-item"><span class="legend-dot dot-ugd"></span> Perawat UGD Masa Kerja &ge; 3 Thn (40 orang)</div>
+          <div class="legend-item"><span class="legend-dot dot-selected"></span> Terpilih Sebagai Sampel (Menyala)</div>
+        </div>
+
+        <!-- Dot Arena Container -->
+        <div class="population-grid" id="pop-grid-arena" aria-label="Visualisasi titik populasi">
+          <!-- 250 dots dynamically injected by JS -->
+        </div>
+
+        <div class="sampling-stat-bar">
+          <div class="stat-col">
+            <span>Metode Aktif:</span>
+            <strong id="active-method-label">Semua Populasi (Belum Sampling)</strong>
+          </div>
+          <div class="stat-col">
+            <span>Jumlah Terpilih:</span>
+            <strong id="selected-count-label">0 / 250 (0%)</strong>
+          </div>
+          <div class="stat-col">
+            <span>Karakteristik Representasi:</span>
+            <span class="badge badge-info" id="sampling-rep-badge">Populasi Utuh</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-5">&larr; Kembali ke Populasi</button>
+        <button class="nav-step-btn next-step" data-next="tab-7">Lanjut ke Bagian 7: Studi Kasus Utuh &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 7: CONTOH PENELITIAN KUANTITATIF UTUH
+         ========================================== -->
+    <section class="tab-content" id="tab-7" role="tabpanel" aria-labelledby="tab-btn-7">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 7 • Integrasi & Aplikasi Nyata</div>
+        <h2 class="section-title">Contoh Kasus Penelitian Kuantitatif Utuh</h2>
+        <p class="section-subtitle">
+          Sintesis komprehensif seluruh komponen metodologi dalam kerangka riset manajemen modern pada PT Tekno Utama (Sarstedt et al., 2021).
+        </p>
+      </div>
+
+      <!-- Hero Study Box -->
+      <div class="case-study-hero">
+        <div class="hero-label">STUDI KASUS RISET EMPIRIS</div>
+        <h3 class="hero-title">
+          "Pengaruh Fleksibilitas Kerja (X) terhadap Kinerja Karyawan (Y) dengan Kepuasan Kerja (Z) sebagai Variabel Mediasi pada PT Tekno Utama"
+        </h3>
+        <p class="hero-desc">
+          Riset ini menguji apakah kebijakan fleksibilitas jam kerja dan sistem hybrid dapat mendorong produktivitas karyawan secara langsung, ataukah harus terlebih dahulu memupuk rasa kepuasan kerja di dalam diri karyawan.
+        </p>
+      </div>
+
+      <!-- Component Breakdown Grid -->
+      <div class="grid-3col mt-6">
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">01</span>
+            <h4>Desain Penelitian</h4>
+          </div>
+          <p><strong>Kuantitatif Eksplanatori</strong> dengan pendekatan asosiatif/korelasional serta teknik <em>Path Analysis</em> untuk membuktikan relasi sebab-akibat.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">02</span>
+            <h4>Populasi Riset</h4>
+          </div>
+          <p>Seluruh karyawan tetap pada PT Tekno Utama dengan total <strong>300 orang</strong> yang tersebar di 5 divisi operasional utama.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">03</span>
+            <h4>Sampel & Teknik</h4>
+          </div>
+          <p><strong>120 karyawan</strong> dipilih menggunakan teknik <em>Proportionate Stratified Random Sampling</em> agar tiap divisi terwakili secara berimbang.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">04</span>
+            <h4>Struktur Variabel</h4>
+          </div>
+          <p>
+            • <strong>Variabel Bebas (X):</strong> Fleksibilitas Kerja<br>
+            • <strong>Variabel Mediasi (Z):</strong> Kepuasan Kerja<br>
+            • <strong>Variabel Terikat (Y):</strong> Kinerja Karyawan
+          </p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">05</span>
+            <h4>Instrumen Pengumpulan</h4>
+          </div>
+          <p>Kuesioner tertutup daring dengan <strong>Skala Likert 5 Poin</strong> (1 = Sangat Tidak Setuju s.d. 5 = Sangat Setuju), teruji validitas konvergen dan reliabilitasnya.</p>
+        </div>
+
+        <div class="case-card">
+          <div class="case-card-header">
+            <span class="case-step">06</span>
+            <h4>Teknik Analisis Data</h4>
+          </div>
+          <p><strong>Partial Least Squares Structural Equation Modeling (PLS-SEM)</strong> menggunakan evaluasi <em>Measurement Model</em> dan <em>Structural Model</em>.</p>
+        </div>
+      </div>
+
+      <!-- SEM Structural Results Interactive Explorer -->
+      <div class="card mt-6 card-accent-green">
+        <div class="card-icon icon-green">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+        </div>
+        <h3 class="card-title">Hasil Estimasi Model Struktural (PLS-SEM)</h3>
+        <p class="card-text">
+          Ringkasan koefisien jalur dan signifikansi statistik dari pengujian hipotesis pada 120 responden karyawan PT Tekno Utama:
+        </p>
+
+        <div class="table-responsive mt-4">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Hipotesis Jalur Relasi</th>
+                <th>Koefisien Jalur (&beta;)</th>
+                <th>t-statistik</th>
+                <th>p-value</th>
+                <th>Kesimpulan Empiris</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>H1: Fleksibilitas (X) &rarr; Kinerja (Y)</strong></td>
+                <td><span class="badge badge-primary">0.245</span></td>
+                <td>2.671</td>
+                <td>0.008 (p &lt; 0.05)</td>
+                <td><span class="badge badge-success">Diterima (Signifikan)</span></td>
+              </tr>
+              <tr>
+                <td><strong>H2: Fleksibilitas (X) &rarr; Kepuasan (Z)</strong></td>
+                <td><span class="badge badge-primary">0.512</span></td>
+                <td>6.418</td>
+                <td>0.000 (p &lt; 0.001)</td>
+                <td><span class="badge badge-success">Diterima (Sangat Signifikan)</span></td>
+              </tr>
+              <tr>
+                <td><strong>H3: Kepuasan (Z) &rarr; Kinerja (Y)</strong></td>
+                <td><span class="badge badge-primary">0.438</span></td>
+                <td>4.920</td>
+                <td>0.000 (p &lt; 0.001)</td>
+                <td><span class="badge badge-success">Diterima (Sangat Signifikan)</span></td>
+              </tr>
+              <tr>
+                <td><strong>H4: Mediasi X &rarr; Z &rarr; Y</strong></td>
+                <td><span class="badge badge-secondary">0.224</span></td>
+                <td>3.892</td>
+                <td>0.000 (p &lt; 0.001)</td>
+                <td><span class="badge badge-success">Mediasi Parsial Terbukti</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="callout callout-info mt-4">
+          <strong>Kesimpulan Manajerial:</strong> Fleksibilitas kerja terbukti mampu meningkatkan kinerja secara langsung (&beta; = 0.245). Namun dampak totalnya akan jauh lebih masif jika fleksibilitas tersebut berhasil memicu <em>kepuasan kerja</em> karyawan terlebih dahulu (pengaruh mediasi &beta; = 0.224). Rujukan: Sarstedt, Ringle, & Hair (2021).
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-6">&larr; Kembali ke Sampel</button>
+        <button class="nav-step-btn next-step" data-next="tab-8">Lanjut ke Bagian 8: Daftar Pustaka &rarr;</button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 8: DAFTAR PUSTAKA / REFERENSI
+         ========================================== -->
+    <section class="tab-content" id="tab-8" role="tabpanel" aria-labelledby="tab-btn-8">
+      <div class="content-header">
+        <div class="badge-pill">Bagian 8 • Rujukan Standar Akademik</div>
+        <h2 class="section-title">Daftar Pustaka & Referensi Utama</h2>
+        <p class="section-subtitle">
+          Kumpulan pustaka acuan baku metodologi penelitian kuantitatif dalam format standar ilmiah APA 7th Edition.
+        </p>
+      </div>
+
+      <div class="search-filter-box">
+        <input type="text" id="ref-search-input" class="form-control" placeholder="🔍 Cari berdasarkan nama penulis, judul buku, atau topik..." aria-label="Cari referensi">
+      </div>
+
+      <div class="references-list" id="references-container">
+        <!-- Reference Card 1 -->
+        <div class="ref-card" data-author="Arikunto" data-topic="Prosedur Penelitian">
+          <div class="ref-citation">
+            <span class="ref-author">Arikunto, S.</span> (2019). <em>Prosedur Penelitian: Suatu Pendekatan Praktik</em>. Jakarta: Rineka Cipta.
+          </div>
+          <div class="ref-tag">Metodologi Praktik • Populasi & Instrumen</div>
+          <button type="button" class="btn-copy-ref" data-citation="Arikunto, S. (2019). Prosedur Penelitian: Suatu Pendekatan Praktik. Jakarta: Rineka Cipta.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 2 -->
+        <div class="ref-card" data-author="Asrulla Jailani Jeka" data-topic="Populasi dan sampling">
+          <div class="ref-citation">
+            <span class="ref-author">Asrulla, R., Jailani, M. S., & Jeka, F.</span> (2023). Populasi dan sampling (kuantitatif), serta pemilihan informan kunci (kualitatif) dalam pendekatan praktis. <em>Jurnal Pendidikan Tambusai</em>, 7(3), 26320-26332.
+          </div>
+          <div class="ref-tag">Teknik Sampling • Komparasi Praktis</div>
+          <button type="button" class="btn-copy-ref" data-citation="Asrulla, R., Jailani, M. S., & Jeka, F. (2023). Populasi dan sampling (kuantitatif), serta pemilihan informan kunci (kualitatif) dalam pendekatan praktis. Jurnal Pendidikan Tambusai, 7(3), 26320-26332.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 3 -->
+        <div class="ref-card" data-author="Cohen Manion Morrison" data-topic="Research Methods in Education">
+          <div class="ref-citation">
+            <span class="ref-author">Cohen, L., Manion, L., & Morrison, K.</span> (2017). <em>Research Methods in Education</em> (8th ed.). London: Routledge.
+          </div>
+          <div class="ref-tag">Desain Riset • Eksperimen & Korelasional</div>
+          <button type="button" class="btn-copy-ref" data-citation="Cohen, L., Manion, L., & Morrison, K. (2017). Research Methods in Education (8th ed.). London: Routledge.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 4 -->
+        <div class="ref-card" data-author="Creswell Creswell" data-topic="Research Design Quantitative">
+          <div class="ref-citation">
+            <span class="ref-author">Creswell, J. W., & Creswell, J. D.</span> (2018). <em>Research Design: Qualitative, Quantitative, and Mixed Methods Approaches</em> (5th ed.). Thousand Oaks: SAGE Publications.
+          </div>
+          <div class="ref-tag">Landasan Filosofis • Desain Riset Universal</div>
+          <button type="button" class="btn-copy-ref" data-citation="Creswell, J. W., & Creswell, J. D. (2018). Research Design: Qualitative, Quantitative, and Mixed Methods Approaches (5th ed.). Thousand Oaks: SAGE Publications.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 5 -->
+        <div class="ref-card" data-author="Hair Black Babin Anderson" data-topic="Multivariate Data Analysis">
+          <div class="ref-citation">
+            <span class="ref-author">Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E.</span> (2019). <em>Multivariate Data Analysis</em> (8th ed.). Cengage Learning.
+          </div>
+          <div class="ref-tag">Analisis Multivariat • Sampel & Validitas</div>
+          <button type="button" class="btn-copy-ref" data-citation="Hair, J. F., Black, W. C., Babin, B. J., & Anderson, R. E. (2019). Multivariate Data Analysis (8th ed.). Cengage Learning.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 6 -->
+        <div class="ref-card" data-author="Sarstedt Ringle Hair" data-topic="PLS-SEM R">
+          <div class="ref-citation">
+            <span class="ref-author">Sarstedt, M., Ringle, C. M., & Hair, J. F.</span> (2021). <em>Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R</em>. Cham: Springer.
+          </div>
+          <div class="ref-tag">Pemodelan Jalur • Mediasi & Moderasi</div>
+          <button type="button" class="btn-copy-ref" data-citation="Sarstedt, M., Ringle, C. M., & Hair, J. F. (2021). Partial Least Squares Structural Equation Modeling (PLS-SEM) Using R. Cham: Springer.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 7 -->
+        <div class="ref-card" data-author="Sekaran Bougie" data-topic="Research Methods for Business">
+          <div class="ref-citation">
+            <span class="ref-author">Sekaran, U., & Bougie, R.</span> (2016). <em>Research Methods for Business: A Skill Building Approach</em> (7th ed.). Chichester: John Wiley & Sons.
+          </div>
+          <div class="ref-tag">Definisi Variabel • Kerangka Teoritis</div>
+          <button type="button" class="btn-copy-ref" data-citation="Sekaran, U., & Bougie, R. (2016). Research Methods for Business: A Skill Building Approach (7th ed.). Chichester: John Wiley & Sons.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 8 -->
+        <div class="ref-card" data-author="Subhaktiyasa" data-topic="Menentukan populasi dan sampel">
+          <div class="ref-citation">
+            <span class="ref-author">Subhaktiyasa, P. G.</span> (2024). Menentukan populasi dan sampel: Pendekatan metodologi penelitian kuantitatif dan kualitatif. <em>Jurnal Ilmiah Profesi Pendidikan</em>, 9(4), 2721-2731.
+          </div>
+          <div class="ref-tag">Kaidah Populasi • Kriteria Sampling Modern</div>
+          <button type="button" class="btn-copy-ref" data-citation="Subhaktiyasa, P. G. (2024). Menentukan populasi dan sampel: Pendekatan metodologi penelitian kuantitatif dan kualitatif. Jurnal Ilmiah Profesi Pendidikan, 9(4), 2721-2731.">Salin Sitasi</button>
+        </div>
+
+        <!-- Reference Card 9 -->
+        <div class="ref-card" data-author="Sugiyono" data-topic="Metode Penelitian Kuantitatif Kualitatif R&D">
+          <div class="ref-citation">
+            <span class="ref-author">Sugiyono.</span> (2018). <em>Metode Penelitian Kuantitatif, Kualitatif, dan R&D</em>. Bandung: Alfabeta.
+          </div>
+          <div class="ref-tag">Karakteristik Positivisme • Skala Pengukuran</div>
+          <button type="button" class="btn-copy-ref" data-citation="Sugiyono. (2018). Metode Penelitian Kuantitatif, Kualitatif, dan R&D. Bandung: Alfabeta.">Salin Sitasi</button>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-7">&larr; Kembali ke Studi Kasus</button>
+        <button class="nav-step-btn btn-highlight-action next-step" data-next="tab-leaderboard">
+          🏆 Lihat Papan Peringkat & Kuis &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 9: PAPAN PERINGKAT / LEADERBOARD
+         ========================================== -->
+    <section class="tab-content" id="tab-leaderboard" role="tabpanel" aria-labelledby="tab-btn-leaderboard">
+      <div class="content-header text-center">
+        <div class="badge-pill">Prestasi & Capaian Belajar</div>
+        <h2 class="section-title">Papan Peringkat Metodologi Kuantitatif</h2>
+        <p class="section-subtitle max-w-700">
+          Daftar peringkat peserta berdasarkan perolehan skor kuis tertinggi dan waktu penyelesaian tercepat. Setiap peserta hanya berhak mengikuti kuis satu kali.
+        </p>
+      </div>
+
+      <!-- Current User Standing Alert -->
+      <div class="user-rank-banner hidden" id="user-rank-banner">
+        <div class="rank-banner-icon">🎖️</div>
+        <div class="rank-banner-info">
+          <h4 id="user-rank-title">Status Anda: Peringkat #1</h4>
+          <p id="user-rank-detail">Nama: Budi Santoso (NIM: 20241010) • Skor: 100/100 • Predikat: Master Metodologis</p>
+        </div>
+      </div>
+
+      <!-- Top 3 Podium Cards -->
+      <div class="podium-container" id="leaderboard-podium">
+        <!-- Juara 2 (Silver) -->
+        <div class="podium-card podium-silver" id="podium-2">
+          <div class="podium-badge">🥈 #2</div>
+          <div class="podium-avatar">🥈</div>
+          <h4 class="podium-name" id="podium-name-2">Memuat...</h4>
+          <span class="podium-nim" id="podium-nim-2">NIM: -</span>
+          <div class="podium-score" id="podium-score-2">90 pts</div>
+          <span class="podium-date" id="podium-date-2">-</span>
+        </div>
+
+        <!-- Juara 1 (Gold) -->
+        <div class="podium-card podium-gold" id="podium-1">
+          <div class="podium-badge">🥇 #1</div>
+          <div class="podium-avatar">👑</div>
+          <h4 class="podium-name" id="podium-name-1">Memuat...</h4>
+          <span class="podium-nim" id="podium-nim-1">NIM: -</span>
+          <div class="podium-score" id="podium-score-1">100 pts</div>
+          <span class="podium-date" id="podium-date-1">-</span>
+        </div>
+
+        <!-- Juara 3 (Bronze) -->
+        <div class="podium-card podium-bronze" id="podium-3">
+          <div class="podium-badge">🥉 #3</div>
+          <div class="podium-avatar">🥉</div>
+          <h4 class="podium-name" id="podium-name-3">Memuat...</h4>
+          <span class="podium-nim" id="podium-nim-3">NIM: -</span>
+          <div class="podium-score" id="podium-score-3">80 pts</div>
+          <span class="podium-date" id="podium-date-3">-</span>
+        </div>
+      </div>
+
+      <!-- Leaderboard Full Table & Filter -->
+      <div class="card mt-6">
+        <div class="flex-between mb-2">
+          <div>
+            <div class="flex-center gap-2 mb-1" style="justify-content: flex-start;">
+              <h3 class="card-title" style="margin: 0;">Daftar Lengkap Peringkat Peserta</h3>
+              <span class="live-realtime-badge"><span class="live-dot"></span> LIVE REAL-TIME</span>
+            </div>
+            <p class="card-text">Data riil mahasiswa Institut Tazkia. Tersinkronisasi otomatis saat kuis diselesaikan.</p>
+          </div>
+          <div class="leaderboard-actions">
+            <input type="text" id="leaderboard-search" class="form-control" style="width: 250px;" placeholder="🔍 Cari nama / NIM..." aria-label="Cari di papan peringkat">
+          </div>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table" id="leaderboard-table">
+            <thead>
+              <tr>
+                <th style="width: 80px;">Rank</th>
+                <th>Nama Peserta</th>
+                <th>Email Mahasiswa</th>
+                <th>NIM / ID</th>
+                <th>Institusi / Kelas</th>
+                <th>Skor</th>
+                <th>Akurasi</th>
+                <th>Waktu Selesai</th>
+                <th>Predikat</th>
+              </tr>
+            </thead>
+            <tbody id="leaderboard-tbody">
+              <!-- Rendered dynamically by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="tab-footer">
+        <button class="nav-step-btn prev-step" data-prev="tab-8">&larr; Kembali ke Daftar Pustaka</button>
+        <button class="nav-step-btn btn-highlight-action next-step" data-next="tab-quiz">
+          🚀 Menuju Kuis Evaluasi &rarr;
+        </button>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         TAB 10: KUIS KOMPREHENSIF AKHIR MATERI
+         ========================================== -->
+    <section class="tab-content" id="tab-quiz" role="tabpanel" aria-labelledby="tab-btn-quiz">
+      <div class="content-header text-center">
+        <div class="badge-pill">Uji Pemahaman Komprehensif</div>
+        <h2 class="section-title">Kuis Metodologi Penelitian Kuantitatif</h2>
+        <p class="section-subtitle max-w-700">
+          Uji penguasaan Anda terhadap 7 materi pokok: Karakteristik, Tujuan, Desain Riset, Variabel X-Y-M-Z, Populasi, Teknik Sampling, dan Analisis Kasus SEM.
+        </p>
+      </div>
+
+      <!-- Owner Preview Notice Banner (Shown only if logged in as Owner) -->
+      <div class="owner-preview-banner hidden" id="owner-preview-banner">
+        <span class="owner-banner-icon">👑</span>
+        <div>
+          <strong>Mode Peninjauan Pemilik (Owner):</strong> Anda dapat mencoba menjawab soal kuis untuk verifikasi materi. Skor Anda dalam mode ini tidak akan dicatat ke dalam Papan Peringkat Peserta.
+        </div>
+      </div>
+
+      <!-- Screen 0: Locked Screen (If Peserta already completed the quiz once) -->
+      <div class="quiz-screen hidden" id="quiz-locked-screen">
+        <div class="quiz-hero-card card-locked">
+          <div class="locked-icon">🔒</div>
+          <div class="badge-pill" style="border-color: var(--color-warning); color: var(--color-warning);">KESEMPATAN HABIS (1/1)</div>
+          <h3>Anda Telah Mengerjakan Kuis Ini</h3>
+          <p id="locked-user-info">
+            Sesuai regulasi metodologi, setiap peserta hanya berhak mengikuti kuis evaluasi <strong>1 (satu) kali</strong> untuk memastikan orisinalitas penilaian.
+          </p>
+
+          <div class="locked-summary-box">
+            <div class="locked-stat">
+              <span>Skor Anda:</span>
+              <strong class="text-green" id="locked-score-display">100 / 100</strong>
+            </div>
+            <div class="locked-stat">
+              <span>Waktu Submit:</span>
+              <strong id="locked-date-display">-</strong>
+            </div>
+            <div class="locked-stat">
+              <span>Predikat:</span>
+              <strong class="text-purple" id="locked-tier-display">Master Metodologis</strong>
+            </div>
+          </div>
+
+          <div class="locked-actions mt-4">
+            <button type="button" class="btn btn-primary btn-lg" id="btn-locked-go-leaderboard">
+              🏆 Lihat Posisi di Papan Peringkat
+            </button>
+            <button type="button" class="btn btn-secondary btn-lg" id="btn-locked-view-review">
+              📋 Lihat Rincian Evaluasi Jawaban Anda
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 1: Start Card -->
+      <div class="quiz-screen active" id="quiz-start-screen">
+        <div class="quiz-hero-card">
+          <div class="quiz-badge-icon">🎓</div>
+          <h3>Siap Menguji Penguasaan Metodologi Anda?</h3>
+          <p>
+            Kuis ini terdiri dari <strong>10 pertanyaan pilihan ganda berbobot</strong> dengan batasan waktu <strong>20 detik per nomor</strong>.
+          </p>
+
+          <!-- Notification if not logged in -->
+          <div class="auth-reminder-box" id="quiz-auth-reminder">
+            ⚠️ <em>Perhatian:</em> Anda harus <strong>Masuk dengan Akun Google @tazkia.ac.id</strong> sebelum memulai kuis agar skor Anda tercatat secara resmi di Papan Peringkat. Setiap peserta hanya dapat mengerjakan kuis <strong>1 kali</strong>.
+          </div>
+
+          <div class="quiz-rules-grid">
+            <div class="rule-box">
+              <span class="rule-icon">⏱️</span>
+              <strong>20 Detik / Soal</strong>
+              <small>Waktu habis otomatis lanjut</small>
+            </div>
+            <div class="rule-box">
+              <span class="rule-icon">🔒</span>
+              <strong>1x Kesempatan</strong>
+              <small>Akun Google @tazkia.ac.id</small>
+            </div>
+            <div class="rule-box">
+              <span class="rule-icon">🟢</span>
+              <strong>Peringkat Real-Time</strong>
+              <small>Skor langsung terhubung live</small>
+            </div>
+          </div>
+
+          <button type="button" class="btn btn-primary btn-lg" id="btn-start-quiz">
+            🚀 Mulai Kuis Sekarang (20s / Soal)
+          </button>
+        </div>
+      </div>
+
+      <!-- Screen 2: Question Interface -->
+      <div class="quiz-screen hidden" id="quiz-play-screen">
+        <div class="quiz-play-wrapper">
+          <!-- Quiz Progress & Meta -->
+          <div class="quiz-meta-bar">
+            <div class="quiz-counter">
+              Pertanyaan <span id="quiz-current-num">1</span> dari <span id="quiz-total-num">10</span>
+            </div>
+            <div class="quiz-timer-badge" id="quiz-timer-badge">
+              <span class="timer-icon">⏱️</span> Sisa Waktu: <strong id="quiz-timer-seconds">20</strong>s
+            </div>
+            <div class="quiz-score-badge">
+              Skor: <span id="quiz-live-score">0</span> pts
+            </div>
+          </div>
+
+          <!-- 20-Second Countdown Progress Bar -->
+          <div class="quiz-timer-track">
+            <div class="quiz-timer-fill" id="quiz-timer-fill" style="width: 100%;"></div>
+          </div>
+
+          <div class="quiz-progress-track">
+            <div class="quiz-progress-fill" id="quiz-progress-fill" style="width: 10%;"></div>
+          </div>
+
+          <!-- Question Box -->
+          <div class="question-container">
+            <div class="question-tag" id="q-topic-tag">Topik: Karakteristik Kuantitatif</div>
+            <h3 class="question-title" id="q-text">Pertanyaan akan dimuat di sini...</h3>
+
+            <!-- Options Grid -->
+            <div class="options-list" id="q-options-container">
+              <!-- Dynamically rendered -->
+            </div>
+
+            <!-- Explanation & Rationale Box (Shown after answering) -->
+            <div class="explanation-box hidden" id="q-explanation-box">
+              <div class="exp-header">
+                <span class="exp-icon" id="exp-status-icon">✓</span>
+                <strong id="exp-status-title">Jawaban Tepat!</strong>
+              </div>
+              <div class="exp-body" id="exp-explanation-text">
+                Penjelasan detail mengenai konsep ini...
+              </div>
+              <div class="exp-footer">
+                <button type="button" class="btn btn-primary" id="btn-next-question">
+                  Pertanyaan Selanjutnya &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Screen 3: Final Result -->
+      <div class="quiz-screen hidden" id="quiz-result-screen">
+        <div class="result-card">
+          <div class="result-badge-icon" id="result-trophy-icon">🏆</div>
+          <div class="badge-pill" id="result-status-pill">EVALUASI SELESAI</div>
+          <h2 class="result-title" id="result-headline">Luar Biasa, Anda Lulus!</h2>
+          <p class="result-subtitle" id="result-subtext">Berikut adalah capaian kompetensi metodologi kuantitatif Anda:</p>
+
+          <div class="score-display-box">
+            <div class="score-circle">
+              <span class="score-big" id="final-score-val">100</span>
+              <span class="score-denom">/ 100</span>
+            </div>
+            <div class="score-metrics-summary">
+              <div class="res-stat-item">
+                <span class="res-stat-label">Jawaban Benar:</span>
+                <strong class="text-green" id="res-correct-count">10</strong>
+              </div>
+              <div class="res-stat-item">
+                <span class="res-stat-label">Jawaban Salah:</span>
+                <strong class="text-rose" id="res-wrong-count">0</strong>
+              </div>
+              <div class="res-stat-item">
+                <span class="res-stat-label">Tingkat Kemahiran:</span>
+                <strong class="text-purple" id="res-tier-label">Master Metodologis</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Topic Mastery Breakdown -->
+          <div class="topic-breakdown-card">
+            <h4>Analisis Capaian Berdasarkan Topik Materi:</h4>
+            <div class="breakdown-bars" id="topic-breakdown-container">
+              <!-- Injected by JS -->
+            </div>
+          </div>
+
+          <div class="result-actions">
+            <button type="button" class="btn btn-primary btn-lg" id="btn-go-see-leaderboard">
+              🏆 Buka Papan Peringkat & Posisi Saya
+            </button>
+            <button type="button" class="btn btn-secondary" id="btn-review-back-to-tab1">
+              📖 Tinjau Kembali Modul Materi
+            </button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Sticky Quick Navigation Footer -->
+  <aside class="quick-jump-bar">
+    <div class="quick-jump-inner">
+      <span class="quick-lbl">Navigasi Cepat Modul:</span>
+      <div class="quick-pills">
+        <button type="button" class="quick-pill active" data-tab="tab-dashboard">🏠 Beranda</button>
+        <button type="button" class="quick-pill" data-tab="tab-1">1. Karakteristik</button>
+        <button type="button" class="quick-pill" data-tab="tab-2">2. Tujuan</button>
+        <button type="button" class="quick-pill" data-tab="tab-3">3. Desain</button>
+        <button type="button" class="quick-pill" data-tab="tab-4">4. Variabel</button>
+        <button type="button" class="quick-pill" data-tab="tab-5">5. Populasi</button>
+        <button type="button" class="quick-pill" data-tab="tab-6">6. Sampel</button>
+        <button type="button" class="quick-pill" data-tab="tab-7">7. Studi Kasus</button>
+        <button type="button" class="quick-pill" data-tab="tab-8">8. Pustaka</button>
+        <button type="button" class="quick-pill" data-tab="tab-leaderboard">9. Peringkat</button>
+        <button type="button" class="quick-pill pill-quiz" data-tab="tab-quiz">10. Kuis</button>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==========================================
+       MODAL: LOGIN PESERTA & OWNER TERPISAH
+       ========================================== -->
+  <div class="modal-backdrop hidden" id="auth-modal" role="dialog" aria-modal="true" aria-labelledby="auth-modal-title">
+    <div class="modal-box">
+      <button type="button" class="modal-close-btn" id="btn-close-auth-modal" aria-label="Tutup Modal">&times;</button>
+      
+      <div class="modal-header">
+        <div class="modal-badge">PORTAL PENGGUNA</div>
+        <h3 class="modal-title" id="auth-modal-title">Masuk ke Platform Pembelajaran</h3>
+        <p class="modal-subtitle">Silakan pilih peran Anda sebagai <strong>Mahasiswa</strong> atau <strong>User / Dosen Pengampu</strong>.</p>
+      </div>
+
+      <!-- Auth Role Switcher -->
+      <div class="auth-role-tabs">
+        <button type="button" class="auth-role-btn active" id="btn-role-tab-peserta">
+          <span class="role-tab-icon">👤</span>
+          <span>Peserta / Mahasiswa</span>
+        </button>
+        <button type="button" class="auth-role-btn" id="btn-role-tab-owner">
+          <span class="role-tab-icon">👑</span>
+          <span>User / Dosen</span>
+        </button>
+      </div>
+
+      <!-- Form Peserta (Login dengan Email Mahasiswa) -->
+      <form class="auth-form-panel active" id="form-login-peserta">
+        <!-- Google Workspace SSO Button in Modal -->
+        <button type="button" class="btn-google-login" id="modal-btn-google-auth">
+          <svg class="google-logo-svg" viewBox="0 0 24 24">
+            <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+            <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+            <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+            <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+          </svg>
+          <span>Masuk dengan Akun Google (@tazkia.ac.id)</span>
+        </button>
+
+        <div class="auth-divider"><span>atau masukkan akun Google kampus</span></div>
+
+        <div class="form-group">
+          <label for="input-peserta-nama">Nama Lengkap Mahasiswa <span class="required">*</span></label>
+          <input type="text" id="input-peserta-nama" class="form-control" placeholder="Contoh: Muhammad Budi Santoso" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="input-peserta-email">Akun Google Mahasiswa (@tazkia.ac.id) <span class="required">*</span></label>
+          <input type="email" id="input-peserta-email" class="form-control" placeholder="nama.mahasiswa@tazkia.ac.id" required autocomplete="email">
+          <small class="form-help">Wajib menggunakan Akun Google resmi (@tazkia.ac.id). Kuis 20s/soal & 1x kesempatan.</small>
+        </div>
+
+        <div class="form-group">
+          <label for="input-peserta-nim">Nomor Induk Mahasiswa (NIM) <span class="required">*</span></label>
+          <input type="text" id="input-peserta-nim" class="form-control" placeholder="Contoh: 20241010" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="input-peserta-instansi">Program Studi / Kelas</label>
+          <input type="text" id="input-peserta-instansi" class="form-control" placeholder="Contoh: Manajemen Bisnis Syariah / Kelas A">
+        </div>
+
+        <div class="callout callout-warning mb-4">
+          <small>⏱️ <strong>Ketentuan Kuis:</strong> Waktu <strong>20 detik per nomor</strong> (auto-submit bila habis), kesempatan <strong>1 kali</strong>, dan skor langsung tersinkronisasi real-time.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          Masuk ke Sesi Kuis &rarr;
+        </button>
+      </form>
+
+      <!-- Form Owner (Login User dengan Username & Password) -->
+      <form class="auth-form-panel hidden" id="form-login-owner">
+        <div class="form-group">
+          <label for="input-owner-username">Username Pengelola <span class="required">*</span></label>
+          <input type="text" id="input-owner-username" class="form-control" placeholder="Masukkan username pengelola" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="input-owner-password">Password / Kata Sandi <span class="required">*</span></label>
+          <input type="password" id="input-owner-password" class="form-control" placeholder="Masukkan kata sandi" required autocomplete="current-password">
+        </div>
+
+        <div class="callout callout-info mb-4">
+          <small>👑 <strong>Hak Akses Pemilik:</strong> Owner dapat melihat rekap semua nilai peserta, mereset kesempatan peserta jika diperlukan, mengekspor data ke format CSV, dan meninjau kuis tanpa batas.</small>
+        </div>
+
+        <button type="submit" class="btn btn-secondary btn-block btn-lg">
+          Masuk ke Panel Owner &rarr;
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: DASHBOARD KELOLA OWNER / DOSEN
+       ========================================== -->
+  <div class="modal-backdrop hidden" id="owner-dashboard-modal" role="dialog" aria-modal="true" aria-labelledby="owner-dash-title">
+    <div class="modal-box modal-box-wide">
+      <button type="button" class="modal-close-btn" id="btn-close-owner-modal" aria-label="Tutup Dashboard">&times;</button>
+      
+      <div class="modal-header flex-between">
+        <div>
+          <div class="modal-badge badge-owner">PANEL KELOLA OWNER</div>
+          <h3 class="modal-title" id="owner-dash-title">Dashboard Pengampu Metopen</h3>
+          <p class="modal-subtitle">Pantau seluruh capaian peserta, statistik kelas, dan manajemen data kuis.</p>
+        </div>
+        <div class="dash-top-actions">
+          <button type="button" class="btn btn-primary btn-sm" id="btn-export-csv">
+            📥 Ekspor Rekap CSV
+          </button>
+          <button type="button" class="btn btn-danger btn-sm" id="btn-clear-all-data">
+            🗑️ Bersihkan Data Peringkat
+          </button>
+        </div>
+      </div>
+
+      <!-- KPI Summary Cards -->
+      <div class="grid-4col mt-4">
+        <div class="kpi-card">
+          <span class="kpi-label">Total Peserta Selesai:</span>
+          <strong class="kpi-val" id="kpi-total-participants">0</strong>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Rata-rata Skor (Mean):</span>
+          <strong class="kpi-val text-purple" id="kpi-average-score">0.0</strong>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Nilai Tertinggi:</span>
+          <strong class="kpi-val text-green" id="kpi-max-score">0</strong>
+        </div>
+        <div class="kpi-card">
+          <span class="kpi-label">Tingkat Kelulusan (&ge;70):</span>
+          <strong class="kpi-val text-cyan" id="kpi-pass-rate">0%</strong>
+        </div>
+      </div>
+
+      <!-- Owner Participants Table with Action Buttons -->
+      <div class="card mt-4" style="background: var(--bg-card-subtle);">
+        <div class="flex-between mb-2">
+          <h4>Daftar Peserta & Kontrol Kesempatan Ujian</h4>
+          <input type="text" id="owner-search-input" class="form-control" style="width: 220px;" placeholder="Cari nama / NIM...">
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>No</th>
+                <th>Nama Peserta</th>
+                <th>Email</th>
+                <th>NIM</th>
+                <th>Institusi</th>
+                <th>Skor</th>
+                <th>Status</th>
+                <th>Waktu Selesai</th>
+                <th>Aksi Owner</th>
+              </tr>
+            </thead>
+            <tbody id="owner-participants-tbody">
+              <!-- Injected by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL: GOOGLE WORKSPACE SSO TAZKIA
+       ========================================== -->
+  <div class="modal-backdrop hidden" id="google-auth-modal" role="dialog" aria-modal="true" aria-labelledby="google-modal-title">
+    <div class="modal-box" style="max-width: 440px; text-align: center;">
+      <button type="button" class="modal-close-btn" id="btn-close-google-modal" aria-label="Tutup Dialog">&times;</button>
+      
+      <div style="margin: 0.5rem 0 1.25rem 0;">
+        <svg style="width: 44px; height: 44px; margin-bottom: 0.5rem;" viewBox="0 0 24 24">
+          <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+          <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+          <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.06H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.94l2.85-2.22.81-.63z"/>
+          <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.06l3.66 2.84c.87-2.6 3.3-4.52 6.16-4.52z"/>
+        </svg>
+        <h3 id="google-modal-title" style="margin: 0 0 0.35rem 0; font-size: 1.25rem;">Otorisasi Akun Google Tazkia</h3>
+        <p style="font-size: 0.85rem; color: var(--text-dim); margin: 0;">Institut Tazkia Google Workspace SSO</p>
+      </div>
+
+      <form id="form-google-sso" style="text-align: left;">
+        <div class="form-group">
+          <label for="google-input-name">Nama Mahasiswa <span class="required">*</span></label>
+          <input type="text" id="google-input-name" class="form-control" placeholder="Nama lengkap Anda" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="google-input-email">Alamat Email Google (@tazkia.ac.id) <span class="required">*</span></label>
+          <input type="email" id="google-input-email" class="form-control" placeholder="nama.mahasiswa@tazkia.ac.id" required autocomplete="email">
+          <small class="form-help">Wajib domain resmi <strong>@tazkia.ac.id</strong></small>
+        </div>
+
+        <div class="form-group">
+          <label for="google-input-nim">NIM Mahasiswa <span class="required">*</span></label>
+          <input type="text" id="google-input-nim" class="form-control" placeholder="Contoh: 20241010" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="google-input-prodi">Program Studi / Kelas (Opsional)</label>
+          <input type="text" id="google-input-prodi" class="form-control" placeholder="Contoh: Manajemen Bisnis Syariah / Kelas A">
+        </div>
+
+        <div class="callout callout-info" style="margin-bottom: 1.25rem;">
+          <small>⏱️ Setiap soal kuis dibatasi <strong>20 detik</strong> dan hanya bisa dikerjakan <strong>1 (satu) kali</strong> dengan rekam nilai real-time.</small>
+        </div>
+
+        <button type="submit" class="btn btn-primary btn-block btn-lg">
+          🔒 Verifikasi & Masuk Kuis Real-Time
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-notification hidden" id="toast-notify" role="alert">
+    <span id="toast-message">Notifikasi</span>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
